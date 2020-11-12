@@ -104,23 +104,29 @@ window.onclick = function closeWindow(event) {
 };
 
 
-const bookFunction = (title, author, pageNumber, readStatus) => {
-  const toggleStatus = () => {
-    if (props.readStatus == 'true' || props.readStatus == true) {
-          props.readStatus = false;
-        } else {
-          props.readStatus = true;
-        }
+class Book{
+  constructor(title, author, pageNumber, readStatus){
+    this.title = title;
+    this.author = author;
+    this.pageNumber = pageNumber;
+    this.readStatus = readStatus
   }
-  const props = { title, author, pageNumber, readStatus, toggleStatus};
-  return  props;
-};
+  toggleStatus(){
+    
+    if (this.readStatus == 'true' || this.readStatus == true) {
+      this.readStatus = false;
+    }else {
+      this.readStatus = true;
+    }
+}
+  }
+
 
 
 
 
 const addBookToLibrary = (title, author, pageNumber, readStatus) => {
-  const newBook = bookFunction(title, author, pageNumber, readStatus);
+  const newBook = new Book(title, author, pageNumber, readStatus);
   myLibrary.push(newBook);
   displayBook(myLibrary);
 };
